@@ -25,6 +25,7 @@ public class DictionaryActivity extends AppCompatActivity {
     List<String> termsSorted;  //store strings (not necessary but everything else is here)
     ListView listViewTerms;         //make this global so it is available to search menuItem
     ArrayAdapter arrayAdapter; //same for arrayAdapter
+    Toast definitionToast; //Toast object
 
 
     @Override
@@ -54,9 +55,13 @@ public class DictionaryActivity extends AppCompatActivity {
                         definition = definitions.get(x);
                     }
                 }
-                Toast.makeText(getApplicationContext(),
+                if (definitionToast != null) {
+                    definitionToast.cancel();
+                }
+                definitionToast = Toast.makeText(getApplicationContext(),
                         term + " = " + definition,
-                        Toast.LENGTH_LONG).show();
+                        Toast.LENGTH_LONG);
+                definitionToast.show();
             }
         });
 

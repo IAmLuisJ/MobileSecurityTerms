@@ -1,35 +1,5 @@
 package edu.grcc.luisjuarez.handheldsecurityterms;
 
-/*
- Written by Tom DeJong  1/24/2018
- Reviewed and edited    1/7/2019
- Propose:  Access a SQLite database in Android Studio  (GRCC CIS274)
-           Will get data from a table's field and put into a List
-
- Proprosed usage:
-    *** Paste the following example code into MainActivity.java ***
-
-       //Make These Global Variables
-       List<String> stringStuff;  //store strings
-       List<Integer> intStuff;    //store integer values
-       List<Double> doubleStuff;  //store double values
-       String databaseName = "MyDatabase.db";  //insert your database name
-
-        //get SQLite database data
-       DatabaseAccess databaseAccess = DatabaseAccess.getInstance(this, databaseName);
-       databaseAccess.open();
-
-       //assign database values to Lists created above
-       stringStuff = databaseAccess.getString("nameOfTable", "nameOfField");  //example of getting string values
-       intStuff = databaseAccess.getInteger("nameOfTable", "nameOfField");    //example of getting integer values
-       doubleStuff = databaseAccess.getDouble("nameOfTable", "nameOfField");  //example of getting double values
-       
-       Collections.sort(myList);   //can be used to sort lists
-
-
-       //DON'T FORGET to paste this as the bottom line in your build.gradle(app) file:
-	  implementation 'com.readystatesoftware.sqliteasset:sqliteassethelper:+'
-*/
 
 import android.content.Context;
 import android.database.Cursor;

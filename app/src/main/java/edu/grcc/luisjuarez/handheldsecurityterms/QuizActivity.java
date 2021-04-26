@@ -34,6 +34,25 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         refreshQuiz();
 
+        if(savedInstanceState != null){
+            term = (String)savedInstanceState.getString("term");
+            definition = (String)savedInstanceState.getString("definition");
+            possibleDefinitions = savedInstanceState.getStringArrayList("possibleDefinitions");
+
+            //get links to textviews and radiobuttons
+            TextView textViewTerm = (TextView) findViewById(R.id.textViewTerm);
+            RadioButton radiobutton_1 = (RadioButton) findViewById(R.id.radioButton1);
+            RadioButton radiobutton_2 = (RadioButton) findViewById(R.id.radioButton2);
+            RadioButton radiobutton_3 = (RadioButton) findViewById(R.id.radioButton3);
+            RadioButton radiobutton_4 = (RadioButton) findViewById(R.id.radioButton4);
+            //set values for textviews and radiobuttons
+            if(cheat) textViewTerm.setText("Term is: " + term + " (" + definition + ")");
+            else textViewTerm.setText("Term is: " + term);
+            radiobutton_1.setText(possibleDefinitions.get(0));
+            radiobutton_2.setText(possibleDefinitions.get(1));
+            radiobutton_3.setText(possibleDefinitions.get(2));
+            radiobutton_4.setText(possibleDefinitions.get(3)); }
+
         //set a listener to the textview that says {New Word}
         TextView mNewWordTextview = (TextView) findViewById(R.id.textViewNewWord);
         mNewWordTextview.setOnClickListener(new View.OnClickListener() {
@@ -108,6 +127,14 @@ public class QuizActivity extends AppCompatActivity {
         }
         return true;
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState); outState.putString("term",
+                term);
+        outState.putString("definition", definition);
+        ArrayList<String> possible_definitions = new ArrayList<String>(possibleDefinitions);
+        outState.putStringArrayList("possibleDefinitions", possible_definitions); }
 
     //This method puts new questions/answers on screen
     void refreshQuiz() {

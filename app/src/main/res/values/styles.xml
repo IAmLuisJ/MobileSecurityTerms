@@ -6,6 +6,27 @@
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+
+        <!-- Customize your theme here with different background color. -->
+        <item name="android:windowBackground">@color/colorBackGround</item>
+
+        <!-- This calls the following style AppTheme.ActionBar below -->
+        <item name="actionBarStyle">@style/AppTheme.ActionBar</item>
+
+    </style>
+
+    <!-- By adding this theme, you can change the actionbar backcolor, textStyle, and height. -->
+    <style name="AppTheme.ActionBar" parent="Widget.AppCompat.Light.ActionBar">
+        <item name="android:titleTextStyle">@style/AppTheme.ActionBar.TitleText</item>
+        <item name="titleTextStyle">@style/AppTheme.ActionBar.TitleText</item>
+        <item name="background">@color/colorBackGround</item>
+        <item name="android:height">150dp</item>
+        <item name="height">60dp</item>
+    </style>
+    <!-- By adding this theme, you can change the actionbar text color and size. -->
+    <style name="AppTheme.ActionBar.TitleText" parent="TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textSize">15dp</item>
+        <item name="android:textColor">@color/colorAccent</item>
     </style>
 
 </resources>

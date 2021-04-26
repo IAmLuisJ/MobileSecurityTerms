@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.speech.tts.TextToSpeech;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -17,6 +18,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Locale;
 
 public class DictionaryActivity extends AppCompatActivity {
     //global variables
@@ -26,6 +28,10 @@ public class DictionaryActivity extends AppCompatActivity {
     ListView listViewTerms;         //make this global so it is available to search menuItem
     ArrayAdapter arrayAdapter; //same for arrayAdapter
     Toast definitionToast; //Toast object
+
+    //This is to add speech
+    private TextToSpeech t1;
+
 
 
     @Override
@@ -43,6 +49,16 @@ public class DictionaryActivity extends AppCompatActivity {
         listViewTerms = (ListView) findViewById(R.id.listViewTerms);
         arrayAdapter = new ArrayAdapter(this, android.R.layout.simple_list_item_1, termsSorted);
         listViewTerms.setAdapter(arrayAdapter);
+
+        t1 = new TextToSpeech(this, new TextToSpeech.OnInitListener() {
+            @Override
+            public void onInit(int status) {
+                if (status == TextToSpeech.SUCCESS) {
+                    int result = t1.setLanguage(Locale.US);
+                }
+            }
+        });
+
 
         //create a listViewTerms listener that will make toast with term and definition
         listViewTerms.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -62,8 +78,12 @@ public class DictionaryActivity extends AppCompatActivity {
                         term + " = " + definition,
                         Toast.LENGTH_LONG);
                 definitionToast.show();
+                String toast_string = term + " = " + definition;
+                t1.speak(toast_string, TextToSpeech.QUEUE_FLUSH, null);
+
             }
         });
+
 
 
     }

@@ -21,7 +21,7 @@ public class SplashActivity extends AppCompatActivity {
                 startActivity(intent);
                 finish();  //close Splash activity when we return
             }
-        }, 5000);   //5 seconds before SwitchboardActivity pops up!
+        }, 10000);   //5 seconds before SwitchboardActivity pops up!
 
     }
 }
